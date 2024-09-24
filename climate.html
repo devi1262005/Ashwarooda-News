@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTERNATIONAL NEWS</title>
+    <title>CLIMATE NEWS</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <link rel="stylesheet" href="same.css">
@@ -11,24 +11,24 @@
 
 </head>
 <body class="light-mode">
+    <div class="all">
     <div class="heading">
         <div class="burger-icon">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
         </div>
-        <div>
-            <h1>NEWSPAPER</h1>
-            <h3>21-09-2024</h3>
-        </div>
+        <div class="name">
+            <h1>ASHWAROODA</h1>
+            <img src="ashwaroda.jpeg" alt="logo" height="90px" width="90px">
+            <h1>EXPRESS</h1>
+            </div>
+            </div>
         <div class="toggle">
             <label class="theme-switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider"></span>
             </label><br>
-            <button id="download-btn">
-                <img src="download_1-1024.webp" alt="download icon" height="20" width="20"> DOWNLOAD
-            </button>
         </div>
     </div>
     <br><br>
@@ -53,10 +53,10 @@
     <div class="search">
         <input type="text" placeholder="Search here...">
         
-   			<!--- India states -->
+   			
 <select id="country-state" name="country-state" onchange="navigateToLink()">
     <option value="">Select</option>
-    <option value="climate.html">Chennai</option>
+    <option value="ch.html">Chennai</option>
     <option value="py.html">Puducherry</option>
     <option value="cb.html">Coimbatore</option>
     <option value="md.html">Madurai</option>
@@ -73,7 +73,7 @@
 	<div class="news">
 	<div class="text">
 <div class="weather-container">
-        <!-- Container to display weather details -->
+       
     </div>
 	</div>
 <img src="//cdn.weatherapi.com/weather/64x64/day/143.png" alt="laddoo" width="400px" height="180px">
@@ -81,14 +81,164 @@
     
     <hr>
     <br>
-    <div class="logo">
+    
+        <script src="same.js"></script><script src="load.js"></script></script>
+<div class="content">
+<div class="news">
+<div class="text">
+    <b>Rahul Gandhi reacts to alleged use of 'animal fat' <br>in Tirupati Laddu:</b> <br><br>
+<label>Thirumala Tirupati Devasthanams, which manages the temple, asserted there was presence <br>of 'Lard'(pig fat) and 
+other impurities in the ghee, citing a lab report</label> 
+</div>
+<img src="maxresdefault.jpg" alt="laddoo" width="400px" height="180px">
+</div>
+<br><hr><br>
+<div class="news">
+    <div class="text">
+        <b>Rahul Gandhi reacts to alleged use of 'animal fat' <br>in Tirupati Laddu:</b> <br><br>
+    <label>Thirumala Tirupati Devasthanams, which manages the temple, asserted there was presence<br> of 'Lard'(pig fat) and 
+    other impurities in the ghee, citing a lab report</label> 
+    </div>
+    <img src="maxresdefault.jpg" alt="laddoo" width="400px" height="180px">
+    </div>
+    <br><hr><br>
+<div class="news">
+        <div class="text">
+            <b>Rahul Gandhi reacts to alleged use of 'animal fat' <br>in Tirupati Laddu:</b> <br><br>
+        <label>Thirumala Tirupati Devasthanams, which manages the temple, asserted there was presence <br>of 'Lard'(pig fat) and 
+        other impurities in the ghee, citing a lab report</label> 
+        </div>
+        <img src="maxresdefault.jpg" alt="laddoo" width="400px" height="180px">
+        </div>
+        <br><hr><br>
+        <div class="news">
+            <div class="text">
+                <b>Rahul Gandhi reacts to alleged use of 'animal fat' <br>in Tirupati Laddu:</b> <br><br>
+            <label>Thirumala Tirupati Devasthanams, which manages the temple, asserted there was presence <br>of 'Lard'(pig fat) and 
+            other impurities in the ghee, citing a lab report</label> 
+            </div>
+            <img src="maxresdefault.jpg" alt="laddoo" width="400px" height="180px">
+            </div>
+            <br><hr><br>
+            <br><br>
+			</div>
+        <div class="logo">
             <h3>Follow us on</h3>
          <a href=""><img src="instagram-logo.png" alt="insta" width="40px" height="40px"></a>
         <a href=""> <img src="facebook-logo-0.png" alt="insta" width="50px" height="50px"></a>
          <a href=""><img src="Twitter-Emblem.png" alt="insta" width="50px" height="30px"></a>
         </div>
         <br><br>
-        <nav class="navbars">
+       
+
+<script>
+function fetchNews() {
+    const url = `http://localhost:5008/api/news/climate`;
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const articles = data.articles;
+
+         
+            const shuffledArticles = articles.sort(() => 0.5 - Math.random());
+
+            
+            const newsItems = document.querySelectorAll('.news');
+
+            shuffledArticles.forEach((article, index) => {
+                if (newsItems[index]) {
+                    newsItems[index].innerHTML = `
+                        <div class="text" onclick="window.location.href='single.html?url=${encodeURIComponent(article.url)}'">
+                            <b>${article.title}</b><br><br>
+                            <label>${article.description}</label>
+                        </div>
+                        <img src="${article.image}" alt="news image" width="400px" height="180px">
+                    `;
+                }
+            });
+
+            // Handle remaining items if articles are less than news items
+            for (let i = shuffledArticles.length; i < newsItems.length; i++) {
+                newsItems[i].innerHTML = `
+                    <div class="text">
+                        <b>Fallback News Title</b><br><br>
+                        <label>Fallback news description.</label>
+                    </div>
+                    <img src="maxresdefault.jpg" alt="fallback image" width="400px" height="180px">
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching news:', error);
+            const newsItems = document.querySelectorAll('.news');
+            newsItems.forEach(item => {
+                item.innerHTML = `
+                    <div class="text">
+                        <b>Fallback News Title</b><br><br>
+                        <label>Fallback news description.</label>
+                    </div>
+                    <img src="maxresdefault.jpg" alt="fallback image" width="400px" height="180px">
+                `;
+            });
+        });
+}
+
+// Fetch news on page load
+document.addEventListener("DOMContentLoaded", () => {
+    fetchNews();
+    // Refresh news every 10 minutes (600000 milliseconds)
+    setInterval(fetchNews, 600000);
+});
+
+// PDF Download Functionality
+document.getElementById('download-btn').addEventListener('click', function() {
+    const dateInput = document.getElementById('dateday').value;
+    if (!dateInput) {
+        alert("Please select a date.");
+        return; // Exit if no date is selected
+    }
+    
+    const date = new Date(dateInput);
+    const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    const category = 'EDUCATION';
+    const filename = `ASWAROODA_${formattedDate}_${category}.pdf`;
+
+    // Create a new div to format for PDF
+    const pdfContent = document.createElement('div');
+    pdfContent.innerHTML = `
+        <h1 style="text-align: center;">EDUCATION NEWS - ${formattedDate}</h1>
+        <div class="pdf-news-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;">
+            ${Array.from(document.querySelectorAll('.news')).map(news => {
+                const title = news.querySelector('.text b') ? news.querySelector('.text b').innerHTML : 'No Title';
+                const description = news.querySelector('.text label') ? news.querySelector('.text label').innerHTML : 'No Description';
+                const imageSrc = news.querySelector('img') ? news.querySelector('img').src : 'maxresdefault.JPG'; // Corrected image reference
+                return `
+                    <div class="pdf-news" style="border: 1px solid #ccc; padding: 10px;">
+                        <b>${title}</b><br>
+                        <label>${description}</label><br>
+                        <img src="${imageSrc}" alt="news image" style="width: 100%; height: auto;">
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+
+    // Generate PDF
+    html2pdf().from(pdfContent).set({
+        margin: 1,
+		useCORS: true,
+        filename: filename,
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    }).save();
+});
+</script>
+ <nav class="navbars">
             <ul class="navlinks">
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact Us</a></li>
@@ -114,51 +264,6 @@ function navigateToLink() {
     }
 }
 </script>
-    <script>
-        function fetchWeather() {
-weatherUrl= 'http://localhost:5009/api/news/chennai';
-
-            fetch(weatherUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(weatherData => {
-                    const location = weatherData.location;
-                    const current = weatherData.current;
-
-                    // Display weather information
-                    const weatherInfo = `
-                        <div class="weather">
-						<b>Details about ${location.region}</b><br>
-                            <b>Weather in ${location.name}</b><br>
-                            <label>Temperature: ${current.temp_c}°C</label><br>
-                            <label>Condition: ${current.condition.text}</label> <br>
-						   <b>The local time ${location.localtime}</b><br>
-						   <br>
-                            <label>Clouds: ${current.cloud}</label>
-							<label>Humidity: ${current.humiditiy}</label>
-							<label>Wind Gust: ${current.gust_mph} mph</label>
-							<br>
-							</div>
-							<br>
-                  </div>
-						
-                    `;
-
-                    // Append weather info to the weather container
-                    document.querySelector('.weather-container').innerHTML += weatherInfo;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-
-        // Call fetchWeather function to display weather details
-        fetchWeather();
-    </script>
 </body>
 </html>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COIMBATORE NEWS</title>
+    <title>INTERNATIONAL NEWS</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <link rel="stylesheet" href="same.css">
@@ -31,8 +31,6 @@
             </label><br>
         </div>
     </div>
-      
-    </div>
     <br><br>
     <nav class="navbar">
         <ul class="nav-links">
@@ -55,7 +53,7 @@
     <div class="search">
         <input type="text" placeholder="Search here...">
         
-   			<!--- India states -->
+   			
 <select id="country-state" name="country-state" onchange="navigateToLink()">
     <option value="">Select</option>
     <option value="climate.html">Chennai</option>
@@ -75,10 +73,10 @@
 	<div class="news">
 	<div class="text">
 <div class="weather-container">
-        <!-- Container to display weather details -->
+        
     </div>
 	</div>
-<img src="//cdn.weatherapi.com/weather/64x64/day/149.png" alt="" width="400px" height="180px">
+<img src="//cdn.weatherapi.com/weather/64x64/day/143.png" alt="laddoo" width="400px" height="180px">
 </div>
     
     <hr>
@@ -118,7 +116,7 @@ function navigateToLink() {
 </script>
     <script>
         function fetchWeather() {
-weatherUrl= 'http://localhost:5009/api/news/Coimbatore';
+weatherUrl= 'http://localhost:5009/api/news/Kerala';
 
             fetch(weatherUrl)
                 .then(response => {
@@ -131,11 +129,10 @@ weatherUrl= 'http://localhost:5009/api/news/Coimbatore';
                     const location = weatherData.location;
                     const current = weatherData.current;
 
-                    // Display weather information
                     const weatherInfo = `
                         <div class="weather">
 						<b>Details about ${location.region}</b><br>
-                           <b>Weather in ${location.name}</b><br>
+                            <b>Weather in ${location.name}</b><br>
                             <label>Temperature: ${current.temp_c}°C</label><br>
                             <label>Condition: ${current.condition.text}</label> <br>
 						   <b>The local time ${location.localtime}</b><br>
@@ -150,15 +147,13 @@ weatherUrl= 'http://localhost:5009/api/news/Coimbatore';
 						
                     `;
 
-                    // Append weather info to the weather container
+                    
                     document.querySelector('.weather-container').innerHTML += weatherInfo;
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
         }
-
-        // Call fetchWeather function to display weather details
         fetchWeather();
     </script>
 </body>
