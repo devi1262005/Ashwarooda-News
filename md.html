@@ -65,7 +65,7 @@
 	<div class="news">
 	<div class="text">
 <div class="weather-container">
-        <!-- Container to display weather details -->
+        
     </div>
 	</div>
 <img src="//cdn.weatherapi.com/weather/64x64/day/143.png" alt="laddoo" width="400px" height="180px">
@@ -93,7 +93,7 @@
         </div>
         <script src="same.js"></script><script src="load.js"></script></script>
 
-    <!-- External scripts at the end -->
+
     <script src="same.js"></script>
     <script src="load.js"></script>
 	
@@ -121,7 +121,7 @@ weatherUrl= 'http://localhost:5009/api/news/Madurai';
                     const location = weatherData.location;
                     const current = weatherData.current;
 
-                    // Display weather information
+                 
                     const weatherInfo = `
                         <div class="weather">
 						<b>Details about ${location.region}</b><br>
@@ -140,7 +140,7 @@ weatherUrl= 'http://localhost:5009/api/news/Madurai';
 						
                     `;
 
-                    // Append weather info to the weather container
+                    
                     document.querySelector('.weather-container').innerHTML += weatherInfo;
                 })
                 .catch(error => {
@@ -148,7 +148,7 @@ weatherUrl= 'http://localhost:5009/api/news/Madurai';
                 });
         }
 
-        // Call fetchWeather function to display weather details
+       
         fetchWeather();
     </script>
 </body>
